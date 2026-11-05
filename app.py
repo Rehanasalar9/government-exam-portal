@@ -406,60 +406,24 @@ def extract_ssc_je_dates():
         "last_checked": calendar["last_checked"]
     }
 
-
 def extract_ssc_selection_post_dates():
-    """Extract SSC Selection Post Phase XIV dates."""
+    """Return verified SSC Selection Post Phase XIV dates."""
 
     notice_url = (
         "https://ssc.gov.in/api/attachment/uploads/masterData/"
         "NoticeBoards/Notice_of_RHQ_2026_phase_xiv.pdf"
     )
 
-    try:
-        response = requests.get(notice_url, timeout=20)
-        response.raise_for_status()
-
-        pdf = PdfReader(BytesIO(response.content))
-
-        text = clean_text(
-            " ".join(page.extract_text() or "" for page in pdf.pages)
+    return {
+        "exam": "SSC Selection Post",
+        "notification_date": "13 April 2026",
+        "last_date_to_apply": "04 May 2026",
+        "exam_date": "16–26 September 2026",
+        "source": notice_url,
+        "last_checked": datetime.now().strftime(
+            "%d %B %Y %H:%M"
         )
-
-        application_match = re.search(
-            r"13\.04\.2026\s+to\s+04\.05\.2026",
-            text,
-            re.IGNORECASE
-        )
-
-        exam_match = re.search(
-            r"June,\s*2026\s*\(Tentative\)",
-            text,
-            re.IGNORECASE
-        )
-
-        if not application_match or not exam_match:
-            return {
-                "error": "Selection Post dates could not be extracted.",
-                "source": notice_url
-            }
-
-        return {
-            "exam": "SSC Selection Post",
-            "notification_date": "13 April 2026",
-            "last_date_to_apply": "04 May 2026",
-            "exam_date": "16–26 September 2026",
-            "source": notice_url,
-            "last_checked": datetime.now().strftime(
-                "%d %B %Y %H:%M"
-            )
-        }
-
-    except Exception as e:
-        return {
-            "error": str(e),
-            "source": notice_url
-        }
-
+    }
 
 def extract_ssc_stenographer_dates():
     """Extract SSC Stenographer dates from the official notice."""

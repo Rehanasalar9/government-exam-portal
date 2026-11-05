@@ -1720,8 +1720,48 @@ def get_exams():
                 exam["exam_status"] = "Upcoming"
             else:
                 exam["exam_status"] = "Exam Period Ongoing"
+        elif re.search(
+            r"\d{1,2}\s*[–-]\s*\d{1,2}\s+"
+            r"(January|February|March|April|May|June|July|August|"
+            r"September|October|November|December)\s+20\d{2}",
+            exam_text,
+            re.IGNORECASE
+        ):
+            range_match = re.search(
+                r"(\d{1,2})\s*[–-]\s*(\d{1,2})\s+"
+                r"(January|February|March|April|May|June|July|August|"
+                r"September|October|November|December)\s+(20\d{2})",
+                exam_text,
+                re.IGNORECASE
+            )
+
+            start_date = datetime.strptime(
+                f"{range_match.group(1)} {range_match.group(3)} {range_match.group(4)}",
+                "%d %B %Y"
+            ).date()
+
+            end_date = datetime.strptime(
+                f"{range_match.group(2)} {range_match.group(3)} {range_match.group(4)}",
+                "%d %B %Y"
+            ).date()
+
+            if today > end_date:
+                exam["exam_status"] = "Exam Completed"
+            elif today < start_date:
+                exam["exam_status"] = "Upcoming"
+            else:
+                exam["exam_status"] = "Exam Period Ongoing"
+
+        elif found_dates:
+            if today > max(found_dates):
+                exam["exam_status"] = "Exam Completed"
+            elif today < min(found_dates):
+                exam["exam_status"] = "Upcoming"
+            else:
+                exam["exam_status"] = "Exam Period Ongoing"
 
         
+          
 
 
         else:

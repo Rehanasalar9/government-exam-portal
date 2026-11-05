@@ -1,0 +1,7 @@
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.env
+ibps_test.pdf
+upsc_calendar.pdf

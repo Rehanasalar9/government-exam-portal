@@ -1,0 +1,599 @@
+
+/* ===== Global styles ===== */
+* {
+    box-sizing: border-box;
+}
+
+:root {
+    --primary: #5145cd;
+    --primary-dark: #3730a3;
+    --text: #202747;
+    --muted: #64748b;
+    --surface: #ffffff;
+    --background: #f4f6ff;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Segoe UI", Arial, sans-serif;
+    color: var(--text);
+    background: var(--background);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* ===== Colourful hero header ===== */
+header {
+    padding: 55px 20px 65px;
+    text-align: center;
+    color: white;
+    background: linear-gradient(135deg, #4338ca, #7c3aed, #db2777);
+    border-radius: 0 0 35px 35px;
+    box-shadow: 0 10px 30px rgba(79, 70, 229, 0.2);
+}
+
+header h1 {
+    margin: 0 0 10px;
+    color: white;
+    font-size: clamp(30px, 5vw, 46px);
+    line-height: 1.2;
+    letter-spacing: -1px;
+}
+
+header p {
+    max-width: 600px;
+    margin: 12px auto 0;
+    color: #f3e8ff;
+    font-size: 17px;
+}
+
+/* ===== Main content ===== */
+main {
+    width: min(1150px, 100%);
+    margin: 0 auto;
+    padding: 30px 22px 40px;
+}
+
+main > h2 {
+    margin: 35px 0 22px;
+    text-align: center;
+    color: #312e81;
+    font-size: clamp(24px, 4vw, 32px);
+}
+
+/* ===== Search and filters ===== */
+.filters {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 14px;
+    margin: 0 auto 30px;
+    padding: 22px;
+    background: white;
+    border: 1px solid #e8e9fb;
+    border-radius: 20px;
+    box-shadow: 0 8px 25px rgba(49, 46, 129, 0.07);
+}
+
+#searchInput,
+#categoryFilter,
+#qualificationFilter {
+    width: 100%;
+    max-width: 300px;
+    min-height: 48px;
+    margin: 0;
+    padding: 12px 15px;
+    color: var(--text);
+    background: #f8f9ff;
+    border: 1px solid #dfe3f5;
+    border-radius: 12px;
+    font: inherit;
+    font-size: 15px;
+}
+
+#searchInput {
+    flex: 1 1 250px;
+}
+
+#categoryFilter,
+#qualificationFilter {
+    flex: 1 1 190px;
+    cursor: pointer;
+}
+
+#searchInput:focus,
+#categoryFilter:focus,
+#qualificationFilter:focus {
+    outline: 3px solid #ddd6fe;
+    border-color: var(--primary);
+}
+
+/* ===== Exam card layout ===== */
+.exam-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 28px;
+    align-items: stretch;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+
+.exam {
+    position: relative;
+    width: 100%;
+    min-width: 0;
+    margin: 0;
+    padding: 30px;
+    overflow-wrap: anywhere;
+    background: var(--surface);
+    border: 1px solid #e8eaf7;
+    border-top: 5px solid #6366f1;
+    border-radius: 20px;
+    box-shadow: 0 7px 22px rgba(37, 44, 100, 0.07);
+    text-align: left;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+
+.exam:nth-child(4n + 2) {
+    border-top-color: #ec4899;
+}
+
+.exam:nth-child(4n + 3) {
+    border-top-color: #10b981;
+}
+
+.exam:nth-child(4n + 4) {
+    border-top-color: #f59e0b;
+}
+
+.exam:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 14px 32px rgba(37, 44, 100, 0.12);
+}
+
+.exam h3 {
+    margin: 0 0 16px;
+    color: #3730a3;
+    font-size: 22px;
+    line-height: 1.35;
+}
+
+.exam p {
+    margin: 10px 0;
+    color: #526079;
+    font-size: 14px;
+    overflow-wrap: anywhere;
+}
+
+.exam p strong {
+    color: #303958;
+}
+
+.exam a {
+    display: inline-block;
+    max-width: 100%;
+    margin: 12px 8px 0 0;
+    padding: 10px 14px;
+    color: white;
+    background: var(--primary);
+    border-radius: 9px;
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+    overflow-wrap: anywhere;
+    transition: background 0.2s ease;
+}
+
+.exam a:hover {
+    background: var(--primary-dark);
+}
+
+/* ===== Status labels ===== */
+.status {
+    display: inline-block;
+    padding: 6px 11px;
+    color: #92400e;
+    background: #fef3c7;
+    border: 1px solid #fde68a;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+/* ===== View details button ===== */
+.details-btn {
+    display: inline-block;
+    margin-top: 14px;
+    padding: 10px 16px;
+    color: #4338ca;
+    background: #eef2ff;
+    border: 1px solid #c7d2fe;
+    border-radius: 9px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s ease, color 0.2s ease;
+}
+
+.details-btn:hover {
+    color: white;
+    background: var(--primary);
+}
+
+/* ===== Expandable exam details ===== */
+.details {
+    margin-top: 18px;
+    padding: 18px;
+    background: #f5f3ff;
+    border-left: 4px solid #8b5cf6;
+    border-radius: 10px;
+    text-align: left;
+}
+
+.details h4 {
+    margin: 0 0 12px;
+    color: #4338ca;
+}
+
+.details p {
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+/* ===== Empty search result ===== */
+#noResults {
+    margin: 25px auto;
+    padding: 25px;
+    color: #64748b;
+    background: white;
+    border: 1px dashed #c7d2fe;
+    border-radius: 14px;
+    text-align: center;
+}
+
+/* ===== Footer ===== */
+footer {
+    margin-top: 45px;
+    padding: 22px 15px;
+    border-top: 1px solid #e0e7ff;
+    text-align: center;
+}
+
+footer p {
+    color: #64748b;
+    font-size: 13px;
+}
+
+/* ===== Mobile and tablet ===== */
+@media (max-width: 700px) {
+    header {
+        padding: 40px 18px 48px;
+        border-radius: 0 0 24px 24px;
+    }
+
+    main {
+        padding: 22px 15px 30px;
+    }
+
+    .filters {
+        padding: 16px;
+        gap: 12px;
+    }
+
+    #searchInput,
+    #categoryFilter,
+    #qualificationFilter {
+        max-width: 100%;
+        flex: 1 1 100%;
+    }
+
+    .exam-list {
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+
+    .exam {
+        padding: 21px;
+    }
+}
+
+/* ===== Respect reduced-motion preferences ===== */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        transition: none !important;
+    }
+}
+
+/* ===== Statistics section ===== */
+.stats {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+    max-width: 950px;
+    margin: 0 auto 30px;
+}
+
+
+.stat-card {
+    padding: 18px 15px;
+    background: white;
+    border: 1px solid #e8eaf7;
+    border-radius: 18px;
+    box-shadow: 0 7px 22px rgba(37, 44, 100, 0.07);
+    text-align: center;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+
+.stat-card:nth-child(1) {
+    border-bottom: 4px solid #6366f1;
+}
+
+.stat-card:nth-child(2) {
+    border-bottom: 4px solid #ec4899;
+}
+
+.stat-card:nth-child(3) {
+    border-bottom: 4px solid #10b981;
+}
+
+.stat-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 26px rgba(37, 44, 100, 0.12);
+}
+
+
+.stat-icon {
+    display: block;
+    font-size: 25px;
+    margin-bottom: 3px;
+}
+
+
+
+.stat-card h3 {
+    margin: 2px 0;
+    color: #4338ca;
+    font-size: 26px;
+}
+
+
+.stat-card p {
+    margin: 0;
+    color: #64748b;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+/* Statistics on mobile */
+@media (max-width: 600px) {
+    .stats {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .stat-card {
+        padding: 16px;
+    }
+}
+
+/* ==========================================
+   LATEST SSC NOTICES
+========================================== */
+
+.notices-section {
+    margin: 30px 0;
+    padding: 25px;
+    background: #ffffff;
+    border-radius: 16px;
+    border: 1px solid #e3e7ff;
+    box-shadow: 0 6px 20px rgba(55, 65, 150, 0.08);
+}
+
+.notices-section h2 {
+    color: #3526a8;
+    margin-top: 0;
+    margin-bottom: 12px;
+}
+
+.notices-section > p {
+    color: #626b86;
+    margin-bottom: 16px;
+}
+
+#sscNotices {
+    display: grid;
+    gap: 14px;
+}
+
+.notice-card {
+    padding: 18px;
+    background: #f7f7ff;
+    border: 1px solid #e0e3ff;
+    border-left: 5px solid #6955ee;
+    border-radius: 10px;
+}
+
+.notice-card h3 {
+    color: #27245f;
+    font-size: 17px;
+    margin: 0 0 12px;
+    overflow-wrap: anywhere;
+}
+
+.notice-card a {
+    display: inline-block;
+    color: #5141d9;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.notice-card a:hover {
+    color: #d62487;
+    text-decoration: underline;
+}
+
+#sscNotices > p {
+    color: #626b86;
+    font-size: 14px;
+    overflow-wrap: anywhere;
+}
+
+#sscNotices > p a {
+    color: #5141d9;
+    margin-right: 4px;
+}
+
+@media (max-width: 600px) {
+    .notices-section {
+        padding: 16px;
+    }
+
+    .notice-card {
+        padding: 14px;
+    }
+}
+
+/* ==========================================
+   EXAM STATUS LABELS
+========================================== */
+
+.exam-status {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 15px 0;
+}
+
+.status-badge {
+    display: inline-block;
+    padding: 8px 14px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.application-closed {
+    background-color: #fee2e2;
+    color: #b91c1c;
+}
+
+.exam-completed {
+    background-color: #e0e7ff;
+    color: #3730a3;
+}
+
+/* ===== FINAL VISIBLE UI UPGRADE ===== */
+
+header {
+    min-height: 230px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: linear-gradient(120deg, #312e81, #5b45d6, #9333ea);
+    border-radius: 0 0 32px 32px;
+}
+
+header h1 {
+    font-size: clamp(34px, 5vw, 48px);
+}
+
+header p {
+    font-size: 17px;
+}
+
+main {
+    max-width: 1250px;
+}
+
+.stats {
+    margin-top: 10px;
+    gap: 24px;
+}
+
+.stat-card {
+    padding: 28px 18px;
+    border-radius: 20px;
+    background: linear-gradient(145deg, #ffffff, #f5f3ff);
+}
+
+.stat-card h3 {
+    font-size: 32px;
+}
+
+.filters {
+    padding: 25px;
+    border-radius: 20px;
+}
+
+.exam-list {
+    gap: 25px;
+}
+
+.exam {
+    padding: 30px;
+    border-radius: 20px;
+    background: linear-gradient(145deg, #ffffff, #fcfbff);
+    box-shadow: 0 8px 25px rgba(49, 46, 129, 0.08);
+}
+
+.exam h3 {
+    font-size: 23px;
+    margin-bottom: 18px;
+}
+
+.exam p {
+    font-size: 15px;
+    line-height: 1.8;
+}
+
+.exam a {
+    padding: 11px 17px;
+    font-size: 14px;
+    border-radius: 10px;
+}
+
+.details-btn {
+    padding: 11px 17px;
+    font-size: 14px;
+}
+
+.notices-section {
+    padding: 30px;
+    border-radius: 20px;
+}
+
+.notice-card {
+    padding: 22px;
+    border-radius: 13px;
+}
+
+main > h2 {
+    margin-top: 40px;
+    margin-bottom: 28px;
+}
+
+footer {
+    padding: 30px 15px;
+}
+
+@media (max-width: 700px) {
+    header {
+        min-height: 190px;
+    }
+
+    .exam {
+        padding: 23px;
+    }
+
+    .notices-section {
+        padding: 20px;
+    }
+}

@@ -1,0 +1,102 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Government Exam Portal</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+    <header>
+        <h1>Government Exam Portal</h1>
+        <p>Find government exams, dates and eligibility.</p>
+    </header>
+
+    <main>
+        <!-- Statistics section -->
+        <section class="stats">
+            <div class="stat-card">
+                <span class="stat-icon">📚</span>
+                <h3 id="examCount">0</h3>
+                <p>Exams Listed</p>
+            </div>
+
+            <div class="stat-card">
+                <span class="stat-icon">🏆</span>
+                <h3 id="categoryCount">0</h3>
+                <p>Exam Categories</p>
+            </div>
+
+            <div class="stat-card">
+                <span class="stat-icon">🔗</span>
+                <h3 id="calendarCount">0</h3>
+                <p>Official Calendars</p>
+            </div>
+        </section>
+
+        <!-- Latest SSC notices -->
+        <section class="notices-section">
+            <h2>Latest SSC Notices</h2>
+            <p>Check announcements from official SSC pages.</p>
+
+            <div id="sscNotices" aria-live="polite">
+                Loading official notices...
+            </div>
+        </section>
+
+        <!-- Search and filters -->
+        <section class="filters">
+            <input
+                type="text"
+                id="searchInput"
+                placeholder="Search government exams..."
+                aria-label="Search government exams"
+            >
+
+            <select id="categoryFilter" aria-label="Filter by category">
+                <option value="All">All Categories</option>
+                <option value="UPSC">UPSC</option>
+                <option value="SSC">SSC</option>
+                <option value="Banking">Banking</option>
+                <option value="Railways">Railways</option>
+                <option value="Defence">Defence</option>
+                <option value="Teaching">Teaching</option>
+            </select>
+
+            <select
+                id="qualificationFilter"
+                aria-label="Filter by qualification"
+            >
+                <option value="All">All Qualifications</option>
+                <option value="10th">10th Pass</option>
+                <option value="12th">12th Pass</option>
+                <option value="Graduate">Graduate</option>
+            </select>
+        </section>
+
+        <!-- Government exam cards -->
+        <h2>Available Government Exams</h2>
+
+        <section
+            class="exam-list"
+            id="examList"
+            aria-live="polite"
+        >
+            <p>Loading government exams...</p>
+        </section>
+
+        <p id="noResults" hidden>No matching exams found.</p>
+
+        <!-- Footer -->
+        <footer>
+            <p>
+                Always verify exam dates and eligibility using official
+                notifications.
+            </p>
+        </footer>
+    </main>
+</body>
+</html>
